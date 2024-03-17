@@ -1,0 +1,9 @@
+import torch
+
+def noise_getting(mean_embedding, SNR_dB=30):
+    variance = mean_embedding.std() ** 2
+    SNR_linear = 10 ** (SNR_dB / 10)
+    noise_power = variance / SNR_linear
+    noise_std = torch.sqrt(noise_power)
+    print(f"The Noise adding: {noise_std}")
+    return torch.normal(0, noise_std, mean_embedding.size()).to(mean_embedding.device)
