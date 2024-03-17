@@ -7,3 +7,6 @@ def noise_getting(mean_embedding, SNR_dB=30):
     noise_std = torch.sqrt(noise_power)
     print(f"The Noise adding: {noise_std}")
     return torch.normal(0, noise_std, mean_embedding.size()).to(mean_embedding.device)
+
+if __name__ == "__main__":
+    noise_getting(mean_embedding, SNR_dB=20)
